@@ -40,7 +40,7 @@ export class FeedbackDisplay {
 		const feedbackList = document.createElement('ul')
 		feedbackList.classList.add('feedback-list')
 
-		feedback.forEach((item) => {
+		feedback.reverse().forEach((item) => {
 			const feedbackItem = document.createElement('li')
 			const feedbackArticle = document.createElement('article')
 			feedbackItem.appendChild(feedbackArticle)
