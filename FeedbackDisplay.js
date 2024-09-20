@@ -24,6 +24,7 @@ export class FeedbackDisplay {
 	render(feedback) {
 		// Generate content
 		const feedbackElement = document.createElement('main')
+		feedbackElement.classList.add('dark')
 		const feedbackHeader = document.createElement('h1')
 		feedbackHeader.textContent = 'Feedback'
 		const feedbackList = this.getFeedbackList(feedback)
