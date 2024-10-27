@@ -18,7 +18,7 @@ export class FeedbackDisplay {
 	async fetch() {
 		const data = await fetch('https://bb-feedback-function.deno.dev/')
 		const json = await data.json()
-		return json
+		return this.applyFilters(json)
 	}
 
 	render(feedback) {
@@ -38,6 +38,12 @@ export class FeedbackDisplay {
 	}
 
 	getFeedbackList(feedback) {
+		if (!feedback.length) {
+			const feedbackElement = document.createElement('p')
+			feedbackElement.textContent = 'No feedback available'
+			return feedbackElement
+		}
+
 		const feedbackList = document.createElement('ul')
 		feedbackList.classList.add('feedback-list')
 
@@ -67,5 +73,9 @@ export class FeedbackDisplay {
 		})
 
 		return feedbackList
+	}
+
+	applyFilters(feedback) {
+		return feedback.filter((item) => item.dateSubmitted < new Date('2024-10-01'))
 	}
 }
